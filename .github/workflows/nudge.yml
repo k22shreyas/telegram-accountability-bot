@@ -5,9 +5,9 @@ on:
     # Each line fires the workflow near a rough window; the Go program
     # itself adds a random 0-45 min delay on top, so actual send times
     # land unpredictably within each window rather than on the dot.
-    - cron: "30 15 * * *"   # ~11:00am ET window
-    - cron: "0 19 * * *"    # ~3:00pm ET window
-    - cron: "0 23 * * *"    # ~7:00pm ET window
+    - cron: "0 21 * * *"    # ~5:00pm ET (EDT, UTC-4) — update to "0 22" after DST ends Nov 1
+    - cron: "0 0 * * *"     # ~8:00pm ET (EDT, UTC-4) — update to "0 1" after DST ends Nov 1
+    - cron: "0 3 * * *"     # ~11:00pm ET (EDT, UTC-4) — update to "0 4" after DST ends Nov 1
   workflow_dispatch: {}      # lets you trigger a test run manually from the Actions tab
 
 permissions:

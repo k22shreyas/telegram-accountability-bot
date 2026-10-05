@@ -192,11 +192,11 @@ func main() {
 		fmt.Println("warning: couldn't save state:", err)
 	}
 
-	// Fuzz the send time within a random window (0-45 min) so messages
-	// don't land at a predictable minute even though the workflow itself
-	// runs on a fixed cron schedule.
+	// Fuzz the send time within a random window (0-15 min) so messages
+	// don't land at the exact same minute every day, while still staying
+	// close to the target time set in the cron schedule.
 	rand.Seed(time.Now().UnixNano())
-	delay := time.Duration(rand.Intn(45)) * time.Minute
+	delay := time.Duration(rand.Intn(15)) * time.Minute
 	fmt.Printf("sleeping %v before sending (topic: %s)\n", delay, s.Topic)
 	time.Sleep(delay)
 
