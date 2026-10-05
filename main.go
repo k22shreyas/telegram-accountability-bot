@@ -118,7 +118,7 @@ type groqResponse struct {
 func generateMessage(apiKey, topic string) (string, error) {
 	systemPrompt := fmt.Sprintf(promptTemplate, topic)
 	reqBody := groqRequest{
-		Model: "llama-3.1-8b-instant",
+		Model: "openai/gpt-oss-20b",
 		Messages: []groqMessage{
 			{Role: "system", Content: systemPrompt},
 			{Role: "user", Content: "send the message now"},
