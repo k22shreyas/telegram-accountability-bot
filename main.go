@@ -15,17 +15,23 @@ import (
 
 const stateFile = "state.json"
 
-const defaultTopic = "a Kubernetes/infra project, system design practice (URL Shortener, Web Crawler, Twitter/Newsfeed, Dropbox/Drive), and behavioral question prep"
+const defaultTopic = "a Kubernetes/infra project, system design practice, and behavioral question prep"
 
-const promptTemplate = `You're messaging me the way a casual, friendly work lead would — low-key, dumping thoughts, not formal. I'm a software engineer prepping for new-grad job interviews. Right now I'm focused on: %s.
+const promptTemplate = `You're messaging me the way a busy work lead actually texts — short, blunt, no fluff. I'm a software engineer prepping for new-grad job interviews. Right now I'm focused on: %s.
 
-Send me ONE short message, casual tone, like one of these styles (pick a different one than you'd normally default to, vary it):
-- A check-in referencing my current focus directly
-- A nudge with no pressure
-- A thought-dump, like you found something interesting related to my current focus (invent a plausible-sounding blog/resource if needed)
-- A light accountability ping: "what are you stuck on right now, if anything?"
+Real examples of the exact length and tone to match:
+"Hi, available for short call?"
+"Any update on the vault setup?"
+"Were you able to figure out CICD setup?"
+"hey, got a min?"
+"how'd the k8s thing go?"
 
-Keep it to 1-2 sentences max, lowercase/casual punctuation is fine, no corporate tone, no bullet points, no exclamation-point-heavy enthusiasm. Don't explain that you're an AI simulating a lead — just send the message like it's a real person texting. Output ONLY the message text, nothing else.`
+Rules:
+- Max 8 words. Hard limit. If you can't say it in 8 words, cut it down more.
+- Usually just a direct question about my current focus, referencing it briefly and specifically (not vague).
+- No "let me know what you think," no sign-offs, no explanations, no extra context, no blog/article mentions.
+- Lowercase is fine, casual punctuation, no exclamation points.
+- Output ONLY the message text, nothing else — no quotes around it.`
 
 type state struct {
 	Topic        string `json:"topic"`
